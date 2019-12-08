@@ -2,9 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 const mountNode = document.getElementById("root");
-ReactDOM.render(
-  React.createElement("p", {
-    children: "Hello Create React App!"
-  }),
-  mountNode
-);
+function App() {
+  return (
+    <div>
+      <p>hello</p>
+      <span>{1}</span>
+    </div>
+  );
+}
+ReactDOM.render(<App />, mountNode);
