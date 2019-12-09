@@ -1,5 +1,12 @@
 import React from "react";
-export default function FilterJobs({ searchText, setSearchText }) {
+export default function FilterJobs({
+  searchText,
+  setSearchText,
+  showOnlyFeatured,
+  showOnlyRemote,
+  setShowOnlyFeatured,
+  setShowOnlyRemote
+}) {
   function handleChange(event) {
     const newVal = event.target.value;
     setSearchText(newVal);
