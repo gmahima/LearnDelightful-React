@@ -1,7 +1,18 @@
 import React from "react";
 import Job from "./Job";
 import jobs from "../data/jobData";
-export default function JobsList() {
-  const elements = jobs.map(job => <Job key={job.title} job={job} />);
-  return <ol>{elements}</ol>;
+export default function JobsList(props) {
+  const { searchText } = props;
+  const filteredJobs = jobs.filter(job => {
+    return job.title.toLowerCase().includes(searchText.toLowerCase());
+  });
+  return (
+    <div>
+      <ol>
+        {filteredJobs.map(job => (
+          <Job key={job.title} job={job} />
+        ))}
+      </ol>
+    </div>
+  );
 }
