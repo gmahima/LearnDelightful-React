@@ -4,7 +4,7 @@ export default function Job(props) {
   const [isDetail, setIsDetail] = useState(false);
   const { title, desc } = props.job;
   function handleClick() {
-    setIsDetail(true);
+    setIsDetail(!isDetail);
   }
   return (
     <li>
