@@ -17,6 +17,15 @@ Velit tenetur quae quibusdam occae"
     desc:
       "Aut commodi rem dolorem et ad aut error. Praesentium quis aspernat\
 ur reprehenderit quibusdam est deleniti eos. "
+  },
+  {
+    id: "3",
+    title: "Some other Engineer",
+    isRemote: true,
+    isFeatured: false,
+    desc:
+      "Aut commodi rem dolorem et ad aut error. Praesentium quis aspernat\
+ur reprehenderit quibusdam est deleniti eos. "
   }
 ];
 export default jobs;
