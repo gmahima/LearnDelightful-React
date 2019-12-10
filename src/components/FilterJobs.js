@@ -1,7 +1,7 @@
 import React from "react";
+//import useInputState from '../hooks/useInputState'
 export default function FilterJobs({
   searchText,
-  setSearchText,
   showOnlyFeatured,
   showOnlyRemote,
   setShowOnlyFeatured,
@@ -23,11 +23,7 @@ export default function FilterJobs({
       <div>
         <div className="field has-addons">
           <div className="control is-expanded">
-            <input
-              className="input"
-              value={searchText}
-              onChange={handleChange}
-            />
+            <input className="input" {...searchText} />
           </div>
         </div>
         <div className="field">
@@ -36,15 +32,7 @@ export default function FilterJobs({
         <div className="field is-grouped">
           <div className="control">
             <label className="checkbox" htmlFor="featured">
-              <input
-                id="featured"
-                type="checkbox"
-                checked={showOnlyFeatured}
-                onChange={event => {
-                  console.log(event.target.checked);
-                  return handleShowOnlyFeatured(event);
-                }}
-              />
+              <input id="featured" type="checkbox" {...showOnlyFeatured} />
               Featured
             </label>
           </div>
@@ -53,11 +41,8 @@ export default function FilterJobs({
               <input
                 id="remote"
                 type="checkbox"
-                checked={showOnlyRemote}
-                onChange={event => {
-                  console.log(event.target.checked);
-                  return handleShowOnlyRemote(event);
-                }}
+                checked={showOnlyRemote.checked}
+                onChange={showOnlyRemote.onChange}
               />
               Remote
             </label>
