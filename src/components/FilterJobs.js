@@ -1,22 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 //import useInputState from '../hooks/useInputState'
 export default function FilterJobs({
   searchText,
   showOnlyFeatured,
-  showOnlyRemote,
-  setShowOnlyFeatured,
-  setShowOnlyRemote
+  showOnlyRemote
 }) {
-  function handleChange(event) {
-    const newVal = event.target.value;
-    setSearchText(newVal);
-  }
-  function handleShowOnlyFeatured(event) {
-    setShowOnlyFeatured(event.target.checked);
-  }
-  function handleShowOnlyRemote(event) {
-    setShowOnlyRemote(event.target.checked);
-  }
+  const searchHeading = searchText.value
+    ? searchText.value + "as search string"
+    : "Search Jobs";
+  useEffect(() => {
+    console.log(searchHeading);
+    document.title = searchHeading;
+    console.log(document.title + " is title");
+  });
   return (
     <section className="section filter-jobs">
       <h1>Search Jobs</h1>
