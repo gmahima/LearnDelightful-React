@@ -1,4 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
+import useDocumentTitle from "../hooks/useDocumentTitle";
 //import useInputState from '../hooks/useInputState'
 export default function FilterJobs({
   searchText,
@@ -6,16 +7,12 @@ export default function FilterJobs({
   showOnlyRemote
 }) {
   const searchHeading = searchText.value
-    ? searchText.value + "as search string"
+    ? "searching for " + searchText.value
     : "Search Jobs";
-  useEffect(() => {
-    console.log(searchHeading);
-    document.title = searchHeading;
-    console.log(document.title + " is title");
-  });
+  useDocumentTitle(searchHeading);
   return (
     <section className="section filter-jobs">
-      <h1>Search Jobs</h1>
+      <h1>{searchHeading}</h1>
       <div>
         <div className="field has-addons">
           <div className="control is-expanded">
