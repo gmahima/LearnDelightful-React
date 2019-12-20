@@ -1,6 +1,5 @@
 import React from "react";
 import useDocumentTitle from "../hooks/useDocumentTitle";
-//import useInputState from '../hooks/useInputState'
 export default function FilterJobs({
   searchText,
   showOnlyFeatured,
