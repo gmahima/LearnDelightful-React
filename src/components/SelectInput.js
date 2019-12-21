@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useOutsideClickRef from "../hooks/useOutsideClickRef";
 export default function SelectInput({ onChange, value, options }) {
   const [areOptionsVisible, setAreOptionsVisible] = useState(false);
   const toggleAreOptionsVisible = () => {
@@ -12,20 +13,35 @@ export default function SelectInput({ onChange, value, options }) {
     onChange(event.target.dataset.option);
     setAreOptionsVisible(false);
   }
+  const ref = useOutsideClickRef(
+    setAreOptionsVisible(false),
+    areOptionsVisible
+  );
   return (
-    <div className="dropdown-menu" id="dropdown-menu" role="menu">
-      <div className="dropdown-content">
-        {options.map(option => (
-          <p
-            data-option={option}
-            className="dropdown-item"
-            onClick={changeOption}
-            key={option}
-          >
-            {option}
-          </p>
-        ))}
+    <div className="dropdown is-active">
+      <div className="dropdown-trigger" onClick={toggleAreOptionsVisible}>
+        <button
+          className="button is-info"
+          aria-haspopup="true"
+          aria-controls="dropdown-menu"
+        >
+          <span>{value}</span>
+        </button>
       </div>
+      {areOptionsVisible ? (
+        <div className="dropdown-menu" ref={ref} id="dropdown-menu" role="menu">
+          {options.map(option => (
+            <p
+              data-option={option}
+              className="dropdown-item"
+              onClick={changeOption}
+              key={option}
+            >
+              {option}
+            </p>
+          ))}
+        </div>
+      ) : null}
     </div>
   );
 }
